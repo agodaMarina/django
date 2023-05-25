@@ -1,0 +1,18 @@
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <p>Nous sommes les étudiants de genie logiciel licence 2</p> <br>
+    <p>Nous somme: {% for nom in noms %}
+        {{nom | upper}}
+        {% endfor %}</p> <br>
+
+        <p>nous sommes au nombre de: {{noms | length}}</p>
+
+        {% if noms|length > 0  %}
+        <p>oh la la la nous sommes nombreux </p>
+        {% else %}
+        <p>nous sommes peu nombreux</p>
+        {% endif %}
+        {% endblock  %}
