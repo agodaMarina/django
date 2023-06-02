@@ -1,0 +1,30 @@
+
+{% extends 'Blog/base.html' %}
+<h1>Liste des articles</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>titre</th>
+            <th>description</th>
+            <th>auteur</th>
+            <th>details</th>
+        </tr>
+        
+    </thead>
+   
+    <tbody>
+        {% for article in articles  %}
+        <tr>
+            <td>{{article.titre}}</td>
+            <td>{{article.description}}</td>
+            <td>{{article.auteur}}</td>
+            <td><a href="/article/{{article.id}}">detail</a></td>
+        </tr>
+    </tbody>
+
+
+
+{% endfor %}
+
+</table>

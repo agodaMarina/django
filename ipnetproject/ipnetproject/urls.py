@@ -24,4 +24,6 @@ urlpatterns = [
     path('Propros/', views.propos),
     path('about/', views.about),
     path('hello/', views.hello),
+    path('article/', views.article),
+    path('article/<int:id>', views.article_detail),
 ]
