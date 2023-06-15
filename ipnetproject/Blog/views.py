@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from Blog.models import Articles
+from Blog.forms import ContactForm
+from django.core.mail import send_mail
+
+
 def hello(request):
     return HttpResponse('<h1>Hello world !<h1>')
 
@@ -9,7 +13,34 @@ def propos(request):
 
 def about(request):
     return render(request, 'blog/about.html')
-# Create your views here.
+
+def email_sent(request):
+    return render(request, 'blog/email_sent.html')
+
+def contact(request):
+
+    if request.method=='POST':
+
+        form=ContactForm(request.POST)
+
+        if form.is_valid():
+
+            send_mail(
+
+                subject=f'Message from {form.cleaned_data["name"] or "anonymous"} via MerchEx Contact Us form',
+                message=form.cleaned_data['message'],
+                from_email=form.cleaned_data['email'],
+                recipient_list=['admin@merchex.xyz'],
+            )
+            return HttpResponseRedirect('/email_sent/')
+    else:
+        form=ContactForm()
+
+        return render(request, 
+                'blog/contact.html',
+                {'form':form})
+
+
 def article(request):
     articles=Articles.objects.all()
     return render(request,'blog/article.html',{'articles':articles})
