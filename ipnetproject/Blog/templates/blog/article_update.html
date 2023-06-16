@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>modification</title>
+</head>
+<body>
+
+{% block content %}
+<h1> Modification </h1>
+
+
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="enregistrer">
+
+</form>
+
+{% endblock %}
+
+</body>
+</html>

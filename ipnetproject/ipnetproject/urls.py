@@ -27,7 +27,10 @@ urlpatterns = [
     path('article/', views.article),
     path('contact/', views.contact),
     path('email_sent/', views.email_sent),
+    path('blog/add', views.article_create, name='article-create'),
     path('article/<int:id>', views.article_detail),
+    path('article/<int:id>', views.article_delete, name='article_delete'),
+    path('article/<int:id>/change', views.article_update, name='article_update'),
 
 
 ]

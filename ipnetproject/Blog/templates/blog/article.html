@@ -19,7 +19,9 @@
             <th>titre</th>
             <th>description</th>
             <th>auteur</th>
+
             <th>details</th>
+            <th>modifier</th>
         </tr>
 
     </thead>
@@ -30,7 +32,9 @@
             <td>{{article.titre}}</td>
             <td>{{article.description}}</td>
             <td>{{article.auteur}}</td>
+
             <td><a href="/article/{{article.id}}">detail</a></td>
+            <td><a href="{% url 'article_update' article.id %}">editer</a></td>
         </tr>
     </tbody>
 
