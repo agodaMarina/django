@@ -1,4 +1,4 @@
-
+{% extends 'blog/base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +6,8 @@
     <title>contact</title>
 </head>
 <body>
+
+{% block content %}
 <h1> Contactez nous </h1>
 
 <h3> mail: Essokpazim.agoda@ipnetinstitute.com</h3>
@@ -17,8 +19,10 @@
     {{form.as_p}}
 
     <input type="submit" value="soumettre">
-    
+
 </form>
+
+{% endblock %}
 
 </body>
 </html>

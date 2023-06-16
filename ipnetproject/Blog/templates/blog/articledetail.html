@@ -1,5 +1,16 @@
+{% extends 'blog/base.html' %}
 
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>detaisl</title>
+</head>
+<body>
+{% block content %}
 <h1>details</h1>
 
 <table id="t">
@@ -9,11 +20,11 @@
             <th>description</th>
             <th>auteur</th>
         </tr>
-        
+
     </thead>
-   
+
     <tbody>
-      
+
         <tr>
             <td>{{articles.titre}}</td>
             <td>{{articles.description}}</td>
@@ -25,3 +36,7 @@
 
 
 </table>
+{% endblock %}
+
+</body>
+</html>
