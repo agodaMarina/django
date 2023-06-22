@@ -58,17 +58,17 @@ def article_detail(request, id):
 def article_create(request):
     if (request.method == 'POST'):
 
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
 
         if (form.is_valid()):
             form.save()
 
-            return HttpResponseRedirect('/article/')
+            return HttpResponseRedirect('/')
 
     else:
         form = ArticleForm()
 
-        return render(request, 'blog/create.html', {'form': form})
+    return render(request, 'blog/create.html', {'form': form})
 
 
 # fonction pour l'update
@@ -86,3 +86,12 @@ def article_update(request, id):
     return render(request,
                   'blog/article_update.html',
                   {'form': form})
+
+
+def article_delete(request, id):
+    article = Articles.objects.get(id=id)
+
+    if request.method == 'POST':
+        article.delete()
+        return HttpResponseRedirect('/')
+    return render(request, 'blog/article_delete.html')

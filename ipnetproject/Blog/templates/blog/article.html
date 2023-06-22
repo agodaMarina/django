@@ -10,40 +10,37 @@
     <title>liste des articles </title>
 </head>
 <body>
-{% block content %}
-<h1>Liste des articles</h1>
+    {% block content %}
 
-<table>
-    <thead>
-        <tr>
-            <th>titre</th>
-            <th>description</th>
-            <th>auteur</th>
+        <div class="container mb-3">
+            <h1 class="text-center">Liste des articles</h1>
+        </div>
 
-            <th>details</th>
-            <th>modifier</th>
-        </tr>
+        <div class="container mb-3" >
+            <a href="{% url 'article-create'%}" class="btn btn-primary">Ajouter un article </a>
+        </div>
 
-    </thead>
-
-    <tbody>
-        {% for article in articles  %}
-        <tr>
-            <td>{{article.titre}}</td>
-            <td>{{article.description}}</td>
-            <td>{{article.auteur}}</td>
-
-            <td><a href="/article/{{article.id}}">detail</a></td>
-            <td><a href="{% url 'article_update' article.id %}">editer</a></td>
-        </tr>
-    </tbody>
+        <div class="container">
+                {% for article in articles  %}
 
 
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{article.image}}" class="card-img-top" alt="...">
+                         <div class="card-body">
+                             <h5 class="card-title">{{article.titre}}</h5>
+                             <p class="card-text">{{article.description}}</p>
+                             <p class="card-text">{{article.auteur}}</p>
+                             <a href="/article/{{article.id}}" class="btn btn-primary">Details</a>
+                         </div>
+                    </div>
+                    <td><a href="{% url 'article_update' article.id %}">editer</a></td>
+                    <td><a href="{% url 'article_delete' article.id %}">supprimer</a></td>
 
-{% endfor %}
+                {% endfor %}
+        </div>
 
-</table>
-{% endblock %}
+
+    {% endblock %}
 
 </body>
 </html>
